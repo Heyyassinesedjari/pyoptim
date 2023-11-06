@@ -33,16 +33,60 @@ Every part of this project is sample code which shows how to do the following:
 
   ## Documentation & Comparative Analysis
 
-    ### Table of Contents
-    - [Single Variable Optimization Algorithms](###single Variable Optimization Algorithms)
-    - [Multivariable Optimization Algorithms](#Multivariable Optimization Algorithms)
-    - [Matrix Inverse](#Matrix Inverse)
-    - [Matrix Decomposition](#Matrix Decomposition)
-    - [Solving Linear System](#Solving Linear Systems)
-  
+### Table of Contents
+- [Single Variable Optimization Algorithms](#single-variable-optimization-algorithms)
+  - [Importing Libraries](#importing-libraries)
+  - [Objectif Function](#objectif-function)
+  - [Parameter Initialization](#parameter-initialization)
+  - [Fixed Step](#fixed-step)
+  - [Accelerated Step](#accelerated-step)
+  - [Exhaustive-Search](#exhaustive-search)
+  - [Dichotomous Search](#dichotomous-search)
+  - [Interval Halving](#interval-halving)
+  - [Fibonacci](#fibonacci)
+  - [Golden_Section](#golden-section)
+  - [Armijo_Backward](#armijo-backward)
+  - [Armijo_Forward](#armijo-forward)
+  - [Comparative Analysis](#comparative-analysis)
+- [Multivariable Optimization Algorithms](#multivariable-optimization-algorithms)
+  - [Importing Libraries](#importing-libraries)
+  - [Objectif Function](#objectif-function)
+  - [Parameter Initialization](#parameter-initialization)
+  - [Gradient Descent](#fixed-step)
+  - [Gradient Conjugate](#gradient-conjugate)
+  - [Newton](#newton)
+  - [Quasi Newton DFP](#quasi-newton-dfp)
+  - [Stochastic Gradient Descent](#stochastic-gradient-descent)
+  - [Stochastic Gradient Descent with BLS](#stochastic-gradient-descent-with-bls)
+  - [Comparative Analysis](#comparative-analysis)
+- [Matrix Inverse](#matrix-inverse)
+  - [Importing Libraries](#importing-libraries)
+  - [Test Matrix](#test-matrix)
+  - [Gauss Jordan](#gauss-jordan)
+  - [Matrix Inverse](#matrix-inverse)
+  - [Matrix Inverse](#matrix-inverse)
+- [Matrix Decomposition](#matrix-decomposition)
+  - [Importing Libraries](#importing-libraries)
+  - [Test Matrix](#test-matrix)
+  - [LU](#lu)
+  - [Choleski](#choleski)
+- [Solving Linear System](#solving-linear-system)
+  - [Importing Libraries](#importing-libraries)
+  - [Test Matrix](#test-matrix)
+  - [Gauss Jordan](#gauss-jordan)
+  - [LU](#lu)
+  - [Choleski](#choleski)
+    
 ### Single Variable Optimization Algorithms
 
- #### Objectif Function
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Importing Libraries
+
+```python
+import my_scipy.onevar_optimize.minimize as soom
+import my_plot.onevar._2D as po2
+```
+
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Objectif Function
 <p align="center">
   
   <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/fac9266e-0d8d-4685-80c0-5735e01cb541" width="50%" height="50%">
@@ -53,7 +97,8 @@ def f(x):
     return x*(x-1.5)   # analytically, argmin(f) = 0.75
 ```
 
- #### Parameter Initialization
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parameter Initialization
+
 <p align="center">
 
   <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/b0c201d3-8a75-42c9-97df-f989a124f8a8" width="50%" height="50%">
@@ -65,18 +110,9 @@ xf=10
 epsilon=1.e-2
 ```
 
-#### importing libraries
 
-```python
-import my_scipy.onevar_optimize.minimize as soom
-import my_plot.onevar._2D as po2
-```
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fixed Step
 
-
-
-#### Fixed Step
-
-Api call<br>
 ```python
 print('x* =',soom.fixed_step(f,xs,epsilon))
 po2.fixed_step(f,xs,epsilon)
@@ -85,13 +121,12 @@ po2.fixed_step(f,xs,epsilon)
 x* = 0.75
 ```
 <p align="center">
-  visulize each step<br>
-  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/5815e93a-3c54-4b70-a331-3ec13983e829" width="50%" height="50%">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/5815e93a-3c54-4b70-a331-3ec13983e829" width="50%" height="50%"><br>
+  The sequence of steps taken by the Fixed Step algorithm before reaching the minimum
 </p>
 
-#### Accelerated Step
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accelerated Step
 
-Api call<br>
 ```python
 print('x* =',soom.accelerated_step(f,xs,epsilon))
 po2.accelerated_step(f,xs,epsilon)
@@ -100,15 +135,15 @@ po2.accelerated_step(f,xs,epsilon)
 x* = 0.86
 ```
 
-
 <p align="center">
-  visulize each step<br>
-  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/237ae937-764b-4205-a50b-05ca82463c77" width="50%" height="50%">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/237ae937-764b-4205-a50b-05ca82463c77" width="50%" height="50%"><br>
+  The sequence of steps taken by the Accelerated Step algorithm before reaching the minimum
 </p>
 
 
-#### Exhaustive Search
-Api call<br>
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exhaustive Search
+
+
 ```python
 print('x* =',soom.exhaustive_search(f,xs,xf,epsilon))
 po2.exhaustive_search(f,xs,xf,epsilon)
@@ -119,14 +154,13 @@ x* = 0.75
 ```
 
 <p align="center">
-  visulize each step<br>
-  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/0431683d-b3d6-4cdf-b300-b1c7dc2fbfbe" width="50%" height="50%">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/0431683d-b3d6-4cdf-b300-b1c7dc2fbfbe" width="50%" height="50%"><br>
+  The sequence of steps taken by the Exhaustive Search algorithm before reaching the minimum
 </p>
 
 
-#### Dichotomous search 
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dichotomous Search 
 
-Api call<br>
 ```python
 mini_delta = 1.e-3
 print('x* =',soom.dichotomous_search(f,xs,xf,epsilon,mini_delta))
@@ -139,13 +173,13 @@ x* = 0.7494742431640624
 
 
 <p align="center">
-  visulize each step<br>
-  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/98106569-afd9-431a-be84-b08563d291c8" width="50%" height="50%">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/98106569-afd9-431a-be84-b08563d291c8" width="50%" height="50%"><br>
+  The sequence of steps taken by the Dichotomous Search algorithm before reaching the minimum
 </p>
 
-#### interval_halving
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interval Halving
 
-Api call<br>
+
 ```python
 print('x* =',soom.interval_halving(f,xs,xf,epsilon))
 po2.interval_halving(f,xs,xf,epsilon)
@@ -157,13 +191,13 @@ x* = 0.75
 
 
 <p align="center">
-  visulize each step<br>
-  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/12c849d6-7660-4d0e-bfd2-ae475f17620a" width="50%" height="50%">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/12c849d6-7660-4d0e-bfd2-ae475f17620a" width="50%" height="50%"><br>
+  The sequence of steps taken by the Interval Halving algorithm before reaching the minimum
 </p>
 
-#### fibonacci
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fibonacci
 
-Api call<br>
+
 ```python
 n=15
 print('x* =',soom.fibonacci(f,xs,xf,n)) 
@@ -174,13 +208,12 @@ x* = 0.76
 ```
 
 <p align="center">
-  visulize each step<br>
-  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/46ffc3d8-e215-4299-ba72-fd0e93d55b04" width="50%" height="50%">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/46ffc3d8-e215-4299-ba72-fd0e93d55b04" width="50%" height="50%"><br>
+  The sequence of steps taken by the Fibonacci algorithm before reaching the minimum
 </p>
 
-#### golden_section
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Golden Section
 
-Api call<br>
 ```python
 print('x* =',soom.golden_section(f,xs,xf,epsilon))
 po2.golden_section(f,xs,xf,epsilon)
@@ -190,13 +223,12 @@ x* = 0.75
 ```
 
 <p align="center">
-  visulize each step<br>
-  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/c264ebf3-6e08-4a95-811a-593f6866ffdf" width="50%" height="50%">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/c264ebf3-6e08-4a95-811a-593f6866ffdf" width="50%" height="50%"><br>
+  The sequence of steps taken by the Golden Section algorithm before reaching the minimum
 </p>
 
-#### armijo_backward
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Armijo Backward
 
-Api call<br>
 ```python
 ŋ=2
 xs=100
@@ -208,13 +240,12 @@ x* = 0.78
 ```
 
 <p align="center">
-  visulize each step<br>
-  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/5e09336e-a7a2-4927-9e16-f58b921d8152" width="50%" height="50%">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/5e09336e-a7a2-4927-9e16-f58b921d8152" width="50%" height="50%"><br>
+    The sequence of steps taken by the Armijo Backward algorithm before reaching the minimum
 </p>
 
-#### armijo_forward
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Armijo Forward
 
-Api call<br>
 ```python
 xs=0.1
 epsilon = 0.5
@@ -230,14 +261,13 @@ x* = 0.8
 
 
 <p align="center">
-  visulize each step<br>
-  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/422ae297-953e-4cb7-96f6-430547362417" width="50%" height="50%">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/422ae297-953e-4cb7-96f6-430547362417" width="50%" height="50%"><br>
+  The sequence of steps taken by the Armijo Forward algorithm before reaching the minimum
 </p>
 
 
-#### Comparative Analysis
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comparative Analysis
 
-Api call<br>
 ```python
 po2.compare_all_time(f,0,2,1.e-2,1.e-3,10,2,0.1,100)
 ```
@@ -246,43 +276,43 @@ po2.compare_all_time(f,0,2,1.e-2,1.e-3,10,2,0.1,100)
   <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/7faa0cff-9687-4dfb-b730-dbce7418172e" width="100%" height="100%">
 </p>
 
-Api call<br>
 ```python
 po2.compare_all_precision(f,0,2,1.e-2,1.e-3,10,2,0.1,100)
 ```
 
 <p align="center">
-  Gap between true and computed argmin <br>
+  Gap between true and computed minimum <br>
   <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/342df44c-8956-4d63-9d85-1850b82b138e" width="100%" height="100%">
 </p>
 
+From the runtime and accuracy graphs, it can be deduced that among the algorithms assessed for this convex single-variable function, the **Golden Section** method emerges as the optimal choice, offering a blend of high accuracy and notably low runtime.
+
 ### Multivariable Optimization Algorithms
 
-#### import library
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Importing Libraries
 ```python
 import my_plot.multivar._3D as pm3
 import my_plot.multivar.contour2D as pmc
 ```
 
-<p align="center">
-  Simple quadratic objectif function for isllustration purpose and Parameter Initialization<br>
-</p>
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Objectif Function
 
 ```python
 def h(x):
     return x[0] - x[1] + 2*(x[0]**2) + 2*x[1]*x[0] + x[1]**2
+# analytically, argmin(f) = [-1, 1.5]
 ```
 
 analitical solution
 
-Parameter Initialization<br>
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parameter Initialization
 ```python
 X=[1000,897]
 alpha=1.e-2
 tol=1.e-2
 ```
 
-#### gradient_descent
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gradient Descent
 
 ```python
 pmc.gradient_descent(h,X,tol,alpha)
@@ -294,12 +324,14 @@ Y* =  [-1.01  1.51]
 ```
 
 <p align="center">
-
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/8a9885a7-681e-427d-a32d-384f33c653fd" width="100%" height="100%">
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/d806e92f-256f-4b99-8fd7-4c911e0d9823" width="100%" height="100%">
+  The sequence of steps taken by the Gradient Descent algorithm before reaching the minimum <br>
+<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/8a9885a7-681e-427d-a32d-384f33c653fd" width="50%" height="50%"><br>
+  Contour Plot<br>
+<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/d806e92f-256f-4b99-8fd7-4c911e0d9823" width="50%" height="50%"><br>
+  3D Plot
 </p>
 
-#### gradient_conjugate
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gradient Conjugate
 
 ```python
 pmc.gradient_conjugate(h,X,tol)
@@ -310,11 +342,15 @@ pm3.gradient_conjugate(h,X,tol)
 Y* =  [-107.38  172.18]
 ```
 
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/4323c783-f219-489b-b89c-f500014ee53e" width="100%" height="100%">
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/a696783b-8b6c-40d4-bef2-78c2e35a8283" width="100%" height="100%">
+<p align="center">
+  The sequence of steps taken by the Gradient Conjugate algorithm before reaching the minimum <br>
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/4323c783-f219-489b-b89c-f500014ee53e" width="50%" height="50%"> <br>
+  Contour Plot <br>
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/a696783b-8b6c-40d4-bef2-78c2e35a8283" width="50%" height="50%"> <br>
+  3D Plot
+</p>
 
-
-#### newton
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Newton
 
 ```python
 pmc.newton(h,X,tol)
@@ -325,10 +361,16 @@ pm3.newton(h,X,tol)
 Y* =  [-1.   1.5]
 ```
 
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/f46c47b6-52b0-481e-aa28-4fb95bc92744" width="100%" height="100%">
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/0d703a89-135e-48e5-b9e5-a4b797372f8f" width="100%" height="100%">
+<p align="center">
+  The sequence of steps taken by the Newton algorithm before reaching the minimum <br>
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/f46c47b6-52b0-481e-aa28-4fb95bc92744" width="50%" height="50%"><br>
+  Contour Plot <br>
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/0d703a89-135e-48e5-b9e5-a4b797372f8f" width="50%" height="50%"><br>
+  3D Plot
+</p>
 
-#### quasi_newton_dfp
+
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quasi Newton DFP
 
 ```python
 pmc.quasi_newton_dfp(h,X,tol)
@@ -338,10 +380,15 @@ pm3.quasi_newton_dfp(h,X,tol)
 Y* =  [-1.   1.5]
 ```
 
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/f53ba118-1275-4d77-ab8b-9fbf0da9e5ca" width="100%" height="100%">
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/0343a203-2634-4027-bdfc-9d1fe14dd479" width="100%" height="100%">
+<p align="center">
+  The sequence of steps taken by the Quasi Newton DFP algorithm before reaching the minimum <br>
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/f53ba118-1275-4d77-ab8b-9fbf0da9e5ca" width="50%" height="50%"><br>
+  Contour Plot <br>
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/0343a203-2634-4027-bdfc-9d1fe14dd479" width="50%" height="50%"><br>
+  3D Plot
+</p>
 
-#### sgd
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stochastic Gradient Descent
 
 ```python
 pmc.sgd(h,X,tol,alpha)
@@ -351,12 +398,15 @@ pm3.sgd(h,X,tol,alpha)
 ```console
 Y* =  [-1.01  1.52]
 ```
+<p align="center">
+  The sequence of steps taken by the Stochastic Gradient Descent algorithm before reaching the minimum <br>
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/2a7ba86a-0d6f-459b-9ea3-112e0aa6c39a" width="50%" height="50%"><br>
+  Contour Plot <br>
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/4b30a3da-6e1b-4eec-afe6-23cdec7427f6" width="50%" height="50%"><br>
+  3D Plot <br>
+</p>
 
-
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/2a7ba86a-0d6f-459b-9ea3-112e0aa6c39a" width="100%" height="100%">
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/4b30a3da-6e1b-4eec-afe6-23cdec7427f6" width="100%" height="100%">
-
-#### sgd_with_bls
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stochastic Gradient Descent with BLS
 
 ```python
 alpha = 100 #it must be high because of BLS
@@ -369,11 +419,16 @@ pm3.sgd_with_bls(h,X,tol,alpha,c)
 Y* =  [-1.   1.5]
 ```
 
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/de105b18-fddf-4794-8a0b-2b4b7192aeb9" width="100%" height="100%">
-<img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/eefbe490-5531-492f-9070-8d7c7030ba8e" width="100%" height="100%">
+<p align="center">
+  The sequence of steps taken by the Stochastic Gradient Descent with BLS algorithm before reaching the minimum <br>
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/de105b18-fddf-4794-8a0b-2b4b7192aeb9" width="50%" height="50%"><br>
+  Contour Plot <br>
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/eefbe490-5531-492f-9070-8d7c7030ba8e" width="50%" height="50%"><br>
+  3D Plot <br>
+</p>
 
 
-#### Comparative Analysis
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comparative Analysis
 
 ```python
 pm3.compare_all_time(h,X,1.e-2,1.e-1,100,2)
@@ -389,27 +444,35 @@ pm3.compare_all_precision(h,X,1.e-2,1.e-1,100,2)
 ```
 
 <p align="center">
-  Gap between true and computed argmin <br>
+  Gap between true and computed minimum <br>
   <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/b542577f-40e7-41db-b4f3-a8e6cdcca089" width="100%" height="100%">
 </p>
+
+From the runtime and accuracy graphs, it can be deduced that among the algorithms assessed for this convex Multivariable function, the **Quasi Newton DFP** method emerges as the optimal choice, offering a blend of high accuracy and notably low runtime.
 
 
 ### Matrix Inverse
 
-#### Import Libraries
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Import Libraries
 
 ```python
 import my_numpy.inverse as npi
 ```
 
-#### Test Matrix
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test Matrix
+
+
+<p align="center">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/2a893552-dc1a-4723-bced-688a71139ec8" width="20%" height="20%">
+</p>
+
 
 ```python
 A = np.array([[1.,2.,3.],[0.,1.,4.],[5.,6.,0.]])
 ```
 
 
-#### gaussjordan
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gauss Jordan
 ```python
 A_1=npi.gaussjordan(A.copy())
 I=A@A_1
@@ -434,12 +497,12 @@ A_1*A =
 
 
 ### Matrix Decomposition
-#### Imports
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Imports
 ```python
 import my_numpy.decompose as npd
 ```
 
-#### Test Matrix
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test Matrix
 
 ```python
 A = np.array([[1.,2.,3.],[0.,1.,4.],[5.,6.,0.]])      #A n'est pas definie positive 
@@ -447,7 +510,7 @@ B = np.array([[2.,-1.,0.],[-1.,2.,-1.],[0.,-1.,2.]])  #B est definie positive
 Y=np.array([45,-78,95])                               #vecteur colonne choisie au hasard
 ```
 
-#### LU
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LU
 
 
 ```python
@@ -478,7 +541,7 @@ U =
  [ True  True  True]]
 ``` 
 
-##### Choleski
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choleski
 
 ```python
 L=npd.choleski(A)          # A is not positive definite
@@ -509,20 +572,25 @@ B = L@(L.T)
 
 ### Solving Linear Systems
 
-#### Imports
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Imports
 ```python
 import my_numpy.solve as nps
 ```
 
 
-#### Test Matrix
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test Matrix
+
+<p align="center">
+  <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/8828cc89-0371-4b6d-9091-285a5f3cdc94" width="40%" height="40%">
+</p>
+
 ```python
-A = np.array([[1.,2.,3.],[0.,1.,4.],[5.,6.,0.]])      #A n'est pas definie positive 
-B = np.array([[2.,-1.,0.],[-1.,2.,-1.],[0.,-1.,2.]])  #B est definie positive
-Y=np.array([45,-78,95])                               #vecteur colonne choisie au hasard
+A = np.array([[1., 2., 3.], [0., 1., 4.], [5., 6., 0.]]) # A is not positive definite
+B = np.array([[2., -1., 0.], [-1., 2., -1.], [0., -1., 2.]]) # B is positive definite
+Y = np.array([45, -78, 95]) # randomly chosen column vector
 ```
 
-#### gaussjordan
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gauss Jordan
 
 ```python
 X=nps.gaussjordan(A,Y)
@@ -560,7 +628,7 @@ X =
 
 ```
 
-#### LU
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LU
 
 ```python
 X=nps.LU(A,Y)
@@ -596,7 +664,7 @@ BX*=Y
  [ True]]
 ```
 
-##### Choleski
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choleski
 
 
 ```python
@@ -621,5 +689,4 @@ BX*=Y
  [[ True]
  [ True]
  [ True]]
-
 ```
