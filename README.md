@@ -1,4 +1,4 @@
-# <p align="center">Python-Library-for-Optimization</p>
+# <p align="center">PyOptim: Python Package for Optimization and Matrix Operations</p>
 <p align="center">
   <img src="https://img.shields.io/badge/conda-4.12.0-orange" width="10%" height="10%">
   <img src="https://img.shields.io/badge/Python-3.9.12-green" width="10%" height="10%">
@@ -27,10 +27,11 @@ Every part of this project is sample code which shows how to do the following:
 
   ## Getting Started
 
+To install this Python Package:
 
-
-
-
+```python
+pip install pyoptim
+```
 
   ## Documentation & Comparative Analysis
 
@@ -83,8 +84,8 @@ Every part of this project is sample code which shows how to do the following:
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Importing Libraries
 
 ```python
-import my_scipy.onevar_optimize.minimize as soom
-import my_plot.onevar._2D as po2
+import pyoptim.my_scipy.onevar_optimize.minimize as soom
+import pyoptim.my_plot.onevar._2D as po2
 ```
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Objectif Function
@@ -292,8 +293,8 @@ From the runtime and accuracy graphs, it can be deduced that among the algorithm
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Importing Libraries
 ```python
-import my_plot.multivar._3D as pm3
-import my_plot.multivar.contour2D as pmc
+import pyoptim.my_plot.multivar._3D as pm3
+import pyoptim.my_plot.multivar.contour2D as pmc
 ```
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Objectif Function
@@ -457,7 +458,7 @@ From the runtime and accuracy graphs, it can be deduced that among the algorithm
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Import Libraries
 
 ```python
-import my_numpy.inverse as npi
+import pyoptim.my_numpy.inverse as npi
 ```
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test Matrix
@@ -500,7 +501,7 @@ A_1*A =
 ### Matrix Decomposition
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Imports
 ```python
-import my_numpy.decompose as npd
+import pyoptim.my_numpy.decompose as npd
 ```
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test Matrix
@@ -575,7 +576,7 @@ B = L@(L.T)
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Imports
 ```python
-import my_numpy.solve as nps
+import pyoptim.my_numpy.solve as nps
 ```
 
 
