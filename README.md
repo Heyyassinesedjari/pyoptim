@@ -33,6 +33,8 @@ To install this Python Package:
 pip install pyoptim
 ```
 
+Run this demo [notebook](https://github.com/Heyyassinesedjari/pyoptim/blob/main/R%C3%A9alisation%20du%20Package%20d'Optimisation%20Python%20PyOptim%20(french%20version).ipynb)
+
   ## Documentation & Comparative Analysis
 
 ### Table of Contents
