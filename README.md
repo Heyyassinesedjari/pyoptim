@@ -194,7 +194,7 @@ x* = 0.75
 
 <p align="center">
   <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/12c849d6-7660-4d0e-bfd2-ae475f17620a" width="50%" height="50%"><br>
-  The sequence of steps taken by the Interval Halving algorithm before reaching the minimum
+  The sequence of steps taken by the Interval Halving algorithm before reaching the minimum.
 </p>
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fibonacci
@@ -211,7 +211,7 @@ x* = 0.76
 
 <p align="center">
   <img src="https://github.com/Heyyassinesedjari/Python-Library-for-Optimization/assets/94799575/46ffc3d8-e215-4299-ba72-fd0e93d55b04" width="50%" height="50%"><br>
-  The sequence of steps taken by the Fibonacci algorithm before reaching the minimum
+  The sequence of steps taken by the Fibonacci algorithm before reaching the minimum.
 </p>
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Golden Section
@@ -507,9 +507,9 @@ import pyoptim.my_numpy.decompose as npd
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test Matrix
 
 ```python
-A = np.array([[1.,2.,3.],[0.,1.,4.],[5.,6.,0.]])      #A n'est pas definie positive 
-B = np.array([[2.,-1.,0.],[-1.,2.,-1.],[0.,-1.,2.]])  #B est definie positive
-Y=np.array([45,-78,95])                               #vecteur colonne choisie au hasard
+A = np.array([[1.,2.,3.],[0.,1.,4.],[5.,6.,0.]])      #A is not positive definite
+B = np.array([[2.,-1.,0.],[-1.,2.,-1.],[0.,-1.,2.]])  #B is positive definite
+Y=np.array([45,-78,95])                               #randomly chosen column vector
 ```
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LU
