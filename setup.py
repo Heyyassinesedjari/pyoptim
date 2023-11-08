@@ -13,7 +13,7 @@ LONG_DESCRIPTION = 'A Python package integrating around ten unconstrained optimi
 
 # Setting up
 setup(
-    name="PyOptim",
+    name="pyoptim",
     version=VERSION,
     author="Heyyassinesedjari",
     author_email="<yassinesmsedjari@gmail.com>",
